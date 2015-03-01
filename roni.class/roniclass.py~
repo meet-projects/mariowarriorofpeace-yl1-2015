@@ -2,7 +2,7 @@ import turtle
 
 screen= turtle.getscreen()
 screen.register_shape("mario.gif")
-#remember, the intersect function will use self.x, self.y but the function that check whether mario is on top of the mushroom uses bty. 
+
 
 class Mario(Turtle):
 	def __init__(self,canvas, lives, dx, dy,score,x,y, radius, bty, steps):
