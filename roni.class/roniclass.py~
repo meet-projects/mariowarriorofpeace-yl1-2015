@@ -22,10 +22,9 @@ class Mario(Turtle):
 	self.steps=steps
 
 	def move_right(self): #when stating that right key calls this function remember to make the if stetement to check whether x value is between  -500<x<-250 etc.
-		
+				
 		self.goto(self.x + self.dx, self.y)
 		self.x= self.x +self.dx
-		
 	def move_left(self): 
 		
 		self.goto(self.x - self.dx, self.y)# remember to stop once reaches the most backish point
