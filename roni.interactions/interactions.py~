@@ -1,0 +1,15 @@
+import math()
+def intersect(object1, object2):
+	dist = math.sqrt((object1.xcor()-object2.xcor())**2 +(object1.ycor()-object2.ycor())**2)
+
+	if dist <= radius1 + radius2:
+		return True
+	else:
+		return False
+
+def intersect_check():
+	
+	if intersect(mario, 
+
+
+
