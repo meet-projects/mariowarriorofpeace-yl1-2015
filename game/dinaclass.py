@@ -1,3 +1,7 @@
+screenMinX= -500
+screenMinY= -500
+screenMaxX= 500
+screenMaxY= 500
 import turtle
 from turtle import *
 import random
@@ -46,12 +50,17 @@ class Holes(Turtle):
 		self.dx =dx                                                  
     
 	def moveleft(self):
-		dx=-1
+		x = self.xcor()
+		self.goto(x-dx,y)
 
 screen.register_shape("hole1",((250,-500),(250,-400),(150,-400),(150,-500)))
 screen.register_shape("hole2",((250,-500),(250,-400),(100,-400),(100,-500)))
 screen.register_shape("hole3",((250,-500),(250,-400),(200,-400),(200,-500)))
 
-
+hole1=Holes(canvas=screen,dx=1,x=500,y=10,size=2)
+hole3=Holes(canvas=screen,dx=1,x=40,y=66,size=3)
+hole2=Holes(canvas=screen,dx=1,x=100,y=333,size=1)
+good=Good_mushrooms(canvas=screen,x=10,y=14,dx=5,radius=10)
+turtle.mainloop ()
 
  

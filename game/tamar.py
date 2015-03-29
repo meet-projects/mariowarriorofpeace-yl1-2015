@@ -11,25 +11,22 @@ class bad_mashroom(Turtle):
         self.penup()
         self.goto(x,y)
         self.dx = dx
-
-	      self.tpy = tpy
+	self.tpy = tpy
         self.shape("Goomba2.gif")
-	      self.radius=radius
+	self.radius=radius
        def getDX(self):
        		return self.dx
     
  
     
-       def setDX(self,dx):
+        def setDX(self,dx):
    	     self.dx = dx
        
 	
 
-	     def move_left(self):
-	       self.dx=-20
-
-       def move(self):
-         self.goto(self.xcor()+self.dx, self.ycor())
-         self.dx=-10           
+	def move_left(self):
+	 x = self.xcor()    
+         y = self.ycor()
+	 self.goto(x-dx,y)
 
 

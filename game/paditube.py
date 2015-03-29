@@ -17,7 +17,7 @@ turtle.goto(120,30)
 #Here we DEFINE the class tube 
 class tube(Turtle):
     # __init__ is going to be called per every new tube we create a new tube
-    def __init__(self,canvas,dx,dy,x,y,size,appearrance):
+    def __init__(self,canvas,dx,dy,x,y,size):
         RawTurtle.__init__(self,canvas) #this line keep it as it is
         # we define the properties of the tube
         self.penup()
@@ -26,8 +26,11 @@ class tube(Turtle):
         self.dx = dx
         self.dy = dy
         self.shape("tube"+str(size))
-        self.appearrance=appearrance
-
+    def moveleft():
+        self.dx=-20
+    def move(self):
+        self.goto(self.xcor()+self.dx,self.ycor())
+        self.dx=0       
     def getSize(self):
         return self.size
     

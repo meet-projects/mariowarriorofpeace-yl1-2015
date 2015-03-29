@@ -19,36 +19,43 @@ class Mario(Turtle):
 		self.steps=steps
 		self.stopfall=stopfall
 		self.stopjump=stopjump
+		self.speed(0)
 	def move_right(self): #when stating that right key calls this function remember to make the if stetement to check whether x value is between  -500<x<-250 etc.
-		if stopmove==False:		
-			self.goto(self.x + self.dx, self.y)
-			self.x= self.x +self.dx
+		if self.stopmove==False:		
+			self.dx=10
+
 		
 	def move_left(self): 
-		if stopmove==False:
-			self.goto(self.x - self.dx, self.y)# remember to stop once reaches the most backish point
-			self.x=self.x -self.dx
+		if self.stopmove==False:
+			self.dx = -10
 	def jump(self):
 		#for a in range (1, 50):?
-		if stopjump==False:
-			self.goto(self.x, self.y + self.dy)
+		if self.stopjump==False:
+			self.stopfall=False
+			self.dy=16
 			self.bty=self.bty+self.dy
+	def stopmario(self):		
+		if self.bty==-100:
+			self.stopfall=True
 
 	def fall(self):
-		if stopfall==False:
-			self.goto(self.x, self.y-dy*2/3)
-			self.bty= self.bty - dy*2/3
-
-	
+		if self.stopfall==False:
+			self.dy=-1
+			self.bty= self.bty+self.dy
 	def get_radius(self):
 		return self.radius
+
+	def move(self):
+		self.goto(self.xcor()+self.dx,self.ycor()+self.dy)
+		self.dx=0
+		self.dy=0
 
 	def distance_increase(self):
 		self.steps=self.steps+1
 	def distance_decrease(self):
 		self.steps=self.steps-1
 
-	def mario_dies(self):
+	def dies(self):
 
 		self.lives= self.lives-1
 	def reach_top(self):

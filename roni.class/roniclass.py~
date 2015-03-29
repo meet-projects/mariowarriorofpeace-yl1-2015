@@ -53,7 +53,7 @@ class Mario(Turtle):
 	def mario_dies(self):
 
 		self.lives= self.lives-1
-mario= Mario(lives=5, dx=5, dy=5, radius= 20, score=0, bty=-100, x=-400, y=-60, steps=0, canvas= screen)	
+mario= Mario(lives=5, dx=5, dy=5, radius= 20, score=0, bty=-100, x=-400, y=-60, steps=0, canvas= screen, stopfall=False, stopmove=False)	
 turtle.penup()
 turtle.goto(-500,-100)
 turtle.pendown()
