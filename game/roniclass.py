@@ -20,49 +20,59 @@ class Mario(Turtle):
 		self.stopfall=stopfall
 		self.stopjump=stopjump
 		self.speed(0)
-	def move_right(self): #when stating that right key calls this function remember to make the if stetement to check whether x value is between  -500<x<-250 etc.
-		if self.stopmove==False:		
-			self.dx=10
+	def move_right(self): #when stating that right key calls this function remember to make the if stetement to check whether x value is between  -500<x<-250 etc.		
+		self.dx=4
+		return True
+
+
 
 		
 	def move_left(self): 
-		if self.stopmove==False:
-			self.dx = -10
+			self.dx = -4
 	def jump(self):
 		#for a in range (1, 50):?
-		if self.stopjump==False:
-			self.stopfall=False
-			self.dy=16
-			self.bty=self.bty+self.dy
-	def stopmario(self):		
-		if self.bty==-100:
-			self.stopfall=True
-
-	def fall(self):
-		if self.stopfall==False:
-			self.dy=-1
-			self.bty= self.bty+self.dy
+		#if self.stopjump==False:
+		if(self.ycor() <= 0):
+			self.dy=5
+		#self.bty=self.bty+self.dy
 	def get_radius(self):
 		return self.radius
 
 	def move(self):
+		
+		self.bty=self.bty+self.dy
+
+
+		# stop mario so screen moves
+		if(self.xcor()>0 and self.dx>0 or self.xcor()<-499 and self.dx<0 ):
+			self.dx=0
+
+		
+		#falling 
+		if(self.ycor() >= 400):
+			self.dy=-2
+
+		#stop falling
+		if(self.ycor() <= 0 ):
+			self.dy=0
+
 		self.goto(self.xcor()+self.dx,self.ycor()+self.dy)
-		self.dx=0
-		self.dy=0
+		#self.dx=0
 
 	def distance_increase(self):
 		self.steps=self.steps+1
 	def distance_decrease(self):
 		self.steps=self.steps-1
 
-	def dies(self):
+	def die(self):
 
 		self.lives= self.lives-1
+		self.goto(-500,0)
 	def reach_top(self):
-		if self.y==200:
-			stopjump=True
-		else: 
-			stopjump=False
+		if self.y>=200:
+			self.stopjump=True
+		#else: 
+			#stopjump=False
 			 
 #mario= Mario(lives=5, dx=5, dy=5, radius= 20, score=0, bty=-100, x=-400, y=-60, steps=0, canvas= screen, stopfall=False, stopmove=False)	
 #turtle.penup()

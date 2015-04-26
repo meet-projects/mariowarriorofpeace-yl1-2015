@@ -19,34 +19,47 @@ screenMaxX = 500
 screenMaxY = 500
 
 def intersect(object1, object2):
-	dist = math.sqrt((object1.xcor()-object2.xcor())**2 +(object1.ycor()-object2.ycor())**2)
+    dist = math.sqrt((object1.xcor()-object2.xcor())**2 +(object1.ycor()-object2.ycor())**2)
 
-	if dist <= radius1 + radius2:
-		return True
-	else:
-		return False
+    if dist <= radius1 + radius2:
+        return True
+    else:
+        return False
 
-def intersect_check():
+def intersect_MBM(mario, badmushroom):
+
+    for badmushroom in shown_badmushrooms:
 	
-	if intersect(Mario, bad_mashroom):
-		if Mario.bty>=bad_mashroom.tpy:
-			die(bad_mashroom)#remind tamar to make the function!
-		else:
-			die(Mario)
-			Mario.goto(-500,-100)
+	    if intersect(mario, badmushroom):
+		    if mario.bty>=bad_mashroom.tpy:
+			    die(badmushroom)#remind tamar to make the function!
+		    else:
+			    die(mario)
+			    mario.goto(-500,-100)
 
-	if intersect(Mario, Good_mushrooms):
-		die(Good_musrhooms)
+def intersect_MGM(mario, good_mushrooms):
+    for goodmushroom in shown_goodmushrooms:
 
-	if intersect(Mario, tube):
+        if intersect(mario, goodmushroom):
+            
+
+            die(goodmushroom)
+
+def intersect_MT(mario, tube):
+
+    for tube in shown_tubes:
+
+
 		
-		if Mario.bty<tube.tpy:
-			stop.xmove=True
+        if mario.bty<tube.tpy:
+            mario.stopmove=True
+        if mario.bty>=tube.tpy:
+            mario.stopfall=True    
 	
-	if intersect(Mario, hole):
-		
-		if Mario.bty<=-100:
-			die(Mario)
+def intersect_MH(mario, hole):
+	for hole in shown_holes:	
+	    if mario.bty<=-100:
+		    die(Mario)
 
 def main():
     # These 4 lines just to prepare the window of the game, no need to change them
@@ -138,10 +151,8 @@ def main():
     mario= Mario(lives=5, dx=0, dy=0, radius= 20, score=0, bty=-100, x=0, y=0, steps=0, canvas= cv, stopfall=True, stopmove=False, stopjump=False)
     def play():
     	#print("hello")
-    	mario.move()
-    	mario.fall()
-    	mario.stopmario()
-    	screen.ontimer(play, 5)
+        mario.move()
+        screen.ontimer(play, 5)
         # Tell all the elements of the game to move
         # Tell the ship to move
         #ship.move()
